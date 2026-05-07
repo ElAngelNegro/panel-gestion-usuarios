@@ -1,0 +1,579 @@
+/* ============================================================
+   EVA 2 — Panel de Gestión de Usuarios
+   styles.css
+   ============================================================ */
+
+/* ---------- Variables ---------- */
+:root {
+  --bg-base:        #0d0f14;
+  --bg-card:        #14171f;
+  --bg-card-alt:    #1a1d27;
+  --bg-input:       #1e2230;
+  --border-color:   #2a2f42;
+  --border-accent:  #3d4460;
+
+  --accent-main:    #4f7dff;
+  --accent-hover:   #6b93ff;
+  --accent-glow:    rgba(79, 125, 255, 0.25);
+
+  --green:          #22c97e;
+  --red:            #ff5c72;
+  --amber:          #f5a623;
+  --purple:         #a78bfa;
+
+  --text-primary:   #e8eaf2;
+  --text-secondary: #7b8099;
+  --text-muted:     #4a5068;
+
+  --font-display:   'Space Mono', monospace;
+  --font-body:      'DM Sans', sans-serif;
+
+  --radius-sm:      6px;
+  --radius-md:      10px;
+  --radius-lg:      16px;
+
+  --shadow-card:    0 4px 24px rgba(0, 0, 0, 0.5);
+  --shadow-glow:    0 0 20px var(--accent-glow);
+}
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(ellipse 60% 40% at 70% 10%, rgba(79, 125, 255, 0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 30% at 10% 80%, rgba(34, 201, 126, 0.04) 0%, transparent 60%);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ---------- Header ---------- */
+.app-header {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+}
+
+.header-logo {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, var(--accent-main), #7c3aed);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  box-shadow: 0 0 14px rgba(79, 125, 255, 0.4);
+}
+
+.logo-icon {
+  color: white;
+  line-height: 1;
+}
+
+.header-title {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: -0.3px;
+}
+
+.header-subtitle {
+  font-size: 11px;
+  color: var(--text-secondary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.header-badge {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  padding: 5px 14px;
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+}
+
+/* ---------- Cards (paneles) ---------- */
+.card-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.card-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-card-alt);
+}
+
+.card-panel-icon {
+  color: var(--accent-main);
+  font-size: 16px;
+  line-height: 1;
+}
+
+.card-panel-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-primary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.card-panel-body {
+  padding: 20px;
+  flex: 1;
+}
+
+/* ---------- Formulario ---------- */
+.form-label-custom {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  margin-bottom: 7px;
+}
+
+.input-custom {
+  width: 100%;
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  padding: 9px 13px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.input-custom::placeholder {
+  color: var(--text-muted);
+}
+
+.input-custom:focus {
+  border-color: var(--accent-main);
+  box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.input-custom.input-error {
+  border-color: var(--red);
+  box-shadow: 0 0 0 3px rgba(255, 92, 114, 0.2);
+}
+
+.input-sm {
+  width: auto;
+  min-width: 140px;
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
+/* Select arrow custom */
+select.input-custom {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath fill='%237b8099' d='M6 8L0 0h12z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 30px;
+  cursor: pointer;
+}
+
+.error-msg {
+  display: block;
+  font-size: 11px;
+  color: var(--red);
+  margin-top: 4px;
+  min-height: 16px;
+  font-weight: 500;
+}
+
+/* ---------- Botones ---------- */
+.btn-primary-custom {
+  background: linear-gradient(135deg, var(--accent-main), #6d28d9);
+  border: none;
+  border-radius: var(--radius-sm);
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  padding: 11px 18px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s, box-shadow 0.2s;
+  box-shadow: 0 4px 14px rgba(79, 125, 255, 0.3);
+}
+
+.btn-primary-custom:hover {
+  opacity: 0.9;
+  box-shadow: var(--shadow-glow);
+  transform: translateY(-1px);
+}
+
+.btn-primary-custom:active {
+  transform: translateY(0);
+}
+
+.btn-secondary-custom {
+  background: var(--bg-input);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-sm);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 7px 12px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.btn-secondary-custom:hover {
+  background: var(--bg-card-alt);
+  color: var(--text-primary);
+  border-color: var(--accent-main);
+}
+
+.btn-secondary-custom.active {
+  border-color: var(--accent-main);
+  color: var(--accent-main);
+  background: rgba(79, 125, 255, 0.08);
+}
+
+/* ---------- Estadísticas ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.stat-item {
+  background: var(--bg-input);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  transition: border-color 0.2s;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  font-weight: 600;
+}
+
+.stat-activos  { border-top: 2px solid var(--green);  }
+.stat-activos .stat-number  { color: var(--green); }
+
+.stat-inactivos { border-top: 2px solid var(--red); }
+.stat-inactivos .stat-number { color: var(--red); }
+
+.stat-admins   { border-top: 2px solid var(--purple); }
+.stat-admins .stat-number   { color: var(--purple); }
+
+.stat-total    { border-top: 2px solid var(--accent-main); }
+.stat-total .stat-number    { color: var(--accent-main); }
+
+/* ---------- Tabla ---------- */
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.tabla-usuarios {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabla-usuarios thead tr {
+  background: var(--bg-card-alt);
+  border-bottom: 2px solid var(--border-color);
+}
+
+.tabla-usuarios thead th {
+  padding: 12px 16px;
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--text-secondary);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.tabla-usuarios tbody tr {
+  border-bottom: 1px solid var(--border-color);
+  transition: background 0.15s;
+}
+
+.tabla-usuarios tbody tr:hover {
+  background: rgba(255,255,255, 0.02);
+}
+
+.tabla-usuarios tbody tr:last-child {
+  border-bottom: none;
+}
+
+.tabla-usuarios td {
+  padding: 12px 16px;
+  font-size: 13px;
+  color: var(--text-primary);
+  vertical-align: middle;
+}
+
+/* Número de fila */
+.td-index {
+  font-family: var(--font-display);
+  font-size: 11px;
+  color: var(--text-muted);
+  width: 36px;
+}
+
+/* Nombre */
+.td-nombre {
+  font-weight: 500;
+}
+
+/* Edad */
+.td-edad {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+/* Rol badge */
+.badge-rol {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+.badge-administrador {
+  background: rgba(167, 139, 250, 0.15);
+  color: var(--purple);
+  border: 1px solid rgba(167, 139, 250, 0.3);
+}
+
+.badge-usuario {
+  background: rgba(79, 125, 255, 0.12);
+  color: var(--accent-hover);
+  border: 1px solid rgba(79, 125, 255, 0.25);
+}
+
+/* Estado badge */
+.badge-estado {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.badge-activo {
+  background: rgba(34, 201, 126, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(34, 201, 126, 0.3);
+}
+
+.badge-inactivo {
+  background: rgba(255, 92, 114, 0.1);
+  color: var(--red);
+  border: 1px solid rgba(255, 92, 114, 0.2);
+}
+
+/* Acciones en tabla */
+.td-acciones {
+  display: flex;
+  gap: 6px;
+  flex-wrap: nowrap;
+}
+
+.btn-accion {
+  border: none;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  white-space: nowrap;
+}
+
+.btn-accion:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.btn-toggle-activo {
+  background: rgba(255, 92, 114, 0.12);
+  color: var(--red);
+  border: 1px solid rgba(255, 92, 114, 0.3);
+}
+
+.btn-toggle-inactivo {
+  background: rgba(34, 201, 126, 0.12);
+  color: var(--green);
+  border: 1px solid rgba(34, 201, 126, 0.3);
+}
+
+.btn-eliminar {
+  background: rgba(255, 92, 114, 0.08);
+  color: var(--red);
+  border: 1px solid rgba(255, 92, 114, 0.2);
+}
+
+.btn-eliminar:hover {
+  background: rgba(255, 92, 114, 0.2);
+}
+
+/* ---------- Estado vacío ---------- */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  display: none;
+}
+
+.empty-icon {
+  font-size: 48px;
+  color: var(--text-muted);
+  margin-bottom: 12px;
+  line-height: 1;
+}
+
+.empty-text {
+  font-family: var(--font-display);
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin-bottom: 4px;
+}
+
+.empty-sub {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ---------- Toast ---------- */
+.toast-custom {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border-accent);
+  border-radius: var(--radius-md);
+  padding: 12px 20px;
+  font-size: 13px;
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.5);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s;
+  pointer-events: none;
+  z-index: 9999;
+  max-width: 300px;
+}
+
+.toast-custom.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ---------- Fila nueva animada ---------- */
+@keyframes fadeInRow {
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.fila-nueva {
+  animation: fadeInRow 0.3s ease forwards;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-accent);
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-main);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+  .header-badge { display: none; }
+
+  .stats-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+
+  .stat-item { padding: 10px 8px; }
+  .stat-number { font-size: 20px; }
+
+  .tabla-usuarios thead th,
+  .tabla-usuarios td {
+    padding: 10px 10px;
+  }
+
+  .card-panel-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
