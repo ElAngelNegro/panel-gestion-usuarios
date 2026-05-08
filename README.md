@@ -87,4 +87,4 @@ Durante el proceso encontré varios errores que corregí con ayuda de Claude y e
 
 ---
 
-*Desarrollado por Sebastián — Analista Programador, 2° año INACAP Valparaíso*
+*Desarrollado por Sebastián Pasmiño — Analista Programador, 2° año INACAP Valparaíso*
